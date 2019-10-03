@@ -1,0 +1,55 @@
+@import "http://fonts.googleapis.com/css?family=Arvo";
+/* Above line is used for online Google font */
+/*body {
+	background-color: #90EE90;
+}*/
+hr{
+	border:0;
+	border-top:1px solid #ccc;
+	margin-bottom:-10px
+}
+div#main{
+	width:828px;
+	height:764px;
+	margin:0 auto;
+	font-family:'Arvo',serif
+}
+div#first{
+	width:350px;
+	height:250px;
+	padding:0 25px 20px;
+	float:left;
+	text-align:center;
+	border-style: dashed;
+	border-width: 5px;
+	background-color: #90EE90;
+}
+.btn{
+	width:260px;
+	height:50px;
+	margin-left:45px
+}
+.button6{
+	width:250px;
+	height:45px;
+	border:none;
+	outline:none;
+	box-shadow:-5px 5px 5px 0 #8aa7fb;
+	margin-top:20px;
+	color:#fff;
+	font-size:14px;
+	text-shadow:0 1px rgba(0,0,0,0.4);
+	background-color:#5882FA;
+	border-radius:3px;
+	font-weight:700
+}
+.button6:hover{
+	background-color:#2E64FE;
+	cursor:pointer
+}
+.button6:active{
+	margin-left:-5px;
+	margin-bottom:-5px;
+	padding-top:2px;
+	box-shadow:none
+}
