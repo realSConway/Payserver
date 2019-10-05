@@ -8,13 +8,11 @@
 	</head>
 	<body>
 		<div id="main">
-			<div id="sub">
 <?php
 if (isset($_POST)) {
-	echo "bc1qv4klgumgvwvktflquwjunmxr42wshtd747rc27";
+	echo "<div id=\"sub\"><p>bc1qv4klgumgvwvktflquwjunmxr42wshtd747rc27</p></div>";
 }
 ?>
-		</div>
 		</div>
 	</body>
 </html>

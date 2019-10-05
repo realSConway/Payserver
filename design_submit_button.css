@@ -25,14 +25,17 @@ div#first{
 	background-color: #90EE90;
 }
 div#sub{
-	width:350px;
-	height:250px;
+	width:480px;
+	height:40px;
 	padding:0 25px 20px;
 	float:left;
 	text-align:center;
 	border-style: dashed;
 	border-width: 5px;
 	background-color: #90EE90;
+}
+p{
+	font-size:20px; 
 }
 .btn{
 	width:260px;
