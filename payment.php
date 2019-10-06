@@ -1,7 +1,7 @@
 <html>
 		<head>
 		<title>Address page</title>
-		<link href="design_submit_button.css" rel="stylesheet">
+		<link href="./../design_submit_button.css" rel="stylesheet">
 		<!--		<style>
 						body {
 								background-color: MediumSeaGreen;
@@ -30,8 +30,11 @@ if (isset($_POST)) {
 	$result = curl_exec($ch);
 
 	$obj = json_decode($result, true);
-	echo "<div id=\"sub><p>".$obj["result"]["address"]."</p></div>";
-
+//	echo "<div id=\"sub><p>".$obj["result"]["address"]."</p></div>";
+	echo $obj["result"]["address"];
+//	echo "<div id=\"sub><p>css test</p></div>";
+	echo "test";
+	
 }
 ?>
 				</main>
