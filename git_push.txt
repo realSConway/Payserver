@@ -1,2 +1,6 @@
-git commit -m "comment"
+x = files
+y = comment
+
+git add x
+git commit -m "y"
 git push -u origin master
