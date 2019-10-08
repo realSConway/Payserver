@@ -1,6 +1,6 @@
 # Payserver
 
-This is a guide to installing and configuring Electrum-Personal-server with NGINX, using simple PHP/HTML payment page on OpenSUSE Raspberry Pi.
+This is a guide to installing and configuring Electrum-Merhcant with NGINX, using simple PHP/HTML payment page on OpenSUSE Raspberry Pi.
 
 Create user **web** which will be the main user within this project.
 
@@ -12,7 +12,7 @@ Install required software with package manager [zypper](https://en.opensuse.org/
 zypper in wget python3-setuptools python3-pip nginx php7 php7-curl php7-fpm
 ```
 
-## Install Electrum-Personal-Server and Requests
+## Install Electrum-merchant and Requests
 
 ```bash
 pip3 install electrum-merchant requests
@@ -31,4 +31,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 Please make sure to update tests as appropriate.
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+[NA]()
