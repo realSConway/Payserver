@@ -8,9 +8,9 @@ Create user **web** which will be the main user within this project.
 
 ### Installation and Configuration as root
 
-- Install bas software
+#### Install base software
 
-Install required software with package manager [zypper](https://en.opensuse.org/Portal:Zypper)
+- Install required software with package manager [zypper](https://en.opensuse.org/Portal:Zypper)
 
 ```bash
 zypper in wget python3-setuptools python3-pip nginx php7 php7-curl php7-fpm
@@ -22,20 +22,20 @@ zypper in wget python3-setuptools python3-pip nginx php7 php7-curl php7-fpm
 pip3 install electrum-merchant requests
 ```
 
-- Configure Firewall
+#### Configure Firewall and NGINX
 
-Configure firewall to allow service http and port 7777
+- Configure firewall to allow service http and port 7777
 ```bash
 firewall-cmd --add-service=http --permanent --zone=public && firewall-cmd --add-port=7777/tcp --permanent --zone=public && firewall-cmd --reload
 ```
 
-- Configure nginx.config
+- Configure nginx.config for payment requests and QR code
 
 ```bash
 vim /etc/nginx/nginx.conf
 
 ```
-And add following within server tag, then reload nginx:
+- Add following within server tag, then reload nginx:
 ```
 location /payment/ {
 	default_type "application/bitcoin-paymentrequest";
@@ -45,48 +45,45 @@ location /payment/ {
 
 ### Installation and Configuration as web
 
-Change user to web, `su - web`
+Change user to web, `su - web` and download download [Electrum Wallet](https://electrum.org/#download).
+Start by creating electrum directory.
 
-- Download/install Electrum
-
-Create electrum installer directories. 
+- Create electrum installer directories. 
 ```
 mkdir electrum && cd ./electrum
 ```
-Download [Electrum Wallet](https://electrum.org/#download).
-
+- Download Electrum and gpg keys
 ```
 wget https://download.electrum.org/3.3.8/Electrum-3.3.8.tar.gz \
 https://download.electrum.org/3.3.8/Electrum-3.3.8.tar.gz.asc \
 https://raw.githubusercontent.com/spesmilo/electrum/master/pubkeys/ThomasV.asc
 
 ```
-Import Thomasv.asc gpg key and verify 
+- Import Thomasv.asc gpg key and verify 
 ```
 gpg --import ThomasV.asc && gpg --verify Electrum*.tar.gz.asc Electrum*.tar.gz
 ```
-
-Result should return: 
+- Result should return: 
 > gpg: Good signature from "Thomas Voegtlin (https://electrum.org) <thomasv@electrum.org>" [unknown]
 
-Then we can install Electrum Wallet with python3
+- Install Electrum with python3
 `python3 -m pip install --user Electrum*.tar.gz`
 
-You may get a message RE PATH, in this case you need to add `/home/web/.local/bin` to *~/.profile*. 
+- You may get a message RE PATH, in this case you need to add `/home/web/.local/bin` to *~/.profile*. 
 ```
-echo 'export PATH="$PATH:/home/web/.local/bin/"' >> ~/.profile
+echo 'export PATH="$PATH:/home/web/.local/bin/"' >> ~/.profile && source ~/.profile
 ```
-After adding path, you will need to activate path with by running `source ~/.profile`
 
-
-- If required, create Electrum wallet
+##### Electrum wallet creation on airlocked computer
 
 Create segwit wallet on airlocked pc (with Tails OS for example)
 
-`electrum create --segwit --encrypt_file=true -W "Password"<Paste>`
+```
+electrum create --segwit --encrypt_file=true -W "Password"<Paste>
+```
 Then export zpub key.
-`electrum getmpk -w ./path/to/wallet/default_wallet`
-
+```electrum getmpk -w ./path/to/wallet/default_wallet
+```
 ### Configuring electrum-merchant
 
 ## Contributing
