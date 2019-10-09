@@ -4,9 +4,11 @@ This is a guide to installing and configuring Electrum-Merhcant with NGINX, usin
 
 Create user **web** which will be the main user within this project.
 
-## Installation and Configuration as root
+## How to
 
-### Install bas software
+### Installation and Configuration as root
+
+- Install bas software
 
 Install required software with package manager [zypper](https://en.opensuse.org/Portal:Zypper)
 
@@ -14,20 +16,20 @@ Install required software with package manager [zypper](https://en.opensuse.org/
 zypper in wget python3-setuptools python3-pip nginx php7 php7-curl php7-fpm
 ```
 
-### Install modules Electrum-Merchant and Requests
+- Install modules Electrum-Merchant and Requests
 
 ```bash
 pip3 install electrum-merchant requests
 ```
 
-### Configure Firewall
+- Configure Firewall
 
 Configure firewall to allow service http and port 7777
 ```bash
 firewall-cmd --add-service=http --permanent --zone=public && firewall-cmd --add-port=7777/tcp --permanent --zone=public && firewall-cmd --reload
 ```
 
-### Configure nginx.config
+- Configure nginx.config
 
 ```bash
 vim /etc/nginx/nginx.conf
@@ -41,11 +43,11 @@ location /payment/ {
 }
 ```
 
-## Installation and Configuration as web
+### Installation and Configuration as web
 
 Change user to web, `su - web`
 
-### Download/install Electrum
+- Download/install Electrum
 
 Create electrum installer directories. 
 ```
@@ -77,7 +79,7 @@ echo 'export PATH="$PATH:/home/web/.local/bin/"' >> ~/.profile
 After adding path, you will need to activate path with by running `source ~/.profile`
 
 
-### If required, create Electrum wallet
+- If required, create Electrum wallet
 
 Create segwit wallet on airlocked pc (with Tails OS for example)
 
