@@ -129,16 +129,6 @@ gpg --import ThomasV.asc && gpg --verify Electrum*.tar.gz.asc Electrum*.tar.gz
 echo 'export PATH="$PATH:/home/web/.local/bin/"' >> ~/.profile && source ~/.profile
 ```
 
-##### Electrum wallet creation on airlocked computer
-
-- Create segwit wallet on airlocked pc (with Tails OS for example)
-```
-electrum create --segwit --encrypt_file=true -W "Password"<Paste>
-```
-- Export zpub key
-```
-electrum getmpk -w ./path/to/wallet/default_wallet
-```
 ### Configuring Electrum
 
 - Set Electrum configs and restore zpub public key:
