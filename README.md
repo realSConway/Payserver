@@ -59,9 +59,51 @@ location = /favicon.ico {
 }
 ```
 
+
+#### Enabling php
+- Make backup of config file
+```
+cp /etc/php7/fpm/php-fpm.conf.default /etc/php7/fpm/php-fpm.conf
+```
+
+- Edit Config and add below to file in order to write log to location: `/var/log/php-fpm.log` 
+```
+error_log = /var/log/php-fpm.log
+```
+
+- Make a copy of `/php.ini`
+```
+cp /etc/php7/cli/php.ini /etc/php7/fpm/
+```
+
+- Edit `/php.ini`, uncomment or add following:
+```
+cgi.fix_pathinfo=0
+```
+
+- Then copy `php.ini` over to `conf.d/`
+```
+cp /etc/php7/fpm/php.ini /etc/php7/conf.d/
+```
+
+- Make a copy of `/www.conf.default`
+```
+cp /etc/php7/fpm/php-fpm.d/www.conf.default /etc/php7/fpm/php-fpm.d/www.conf
+```
+
+- Finally restart nginx service and enable/start php-fpm service
+```
+systemctl restart nginx && systemctl enable php-fpm && systemctl start php-fpm  
+```
+
+
 ### Installation and Configuration as web
 
-Change to user web, `su - web` create electrum directory and download [Electrum Wallet](https://electrum.org/#download).
+- Change to user web, `su - web`
+
+#### Download verify Electrum.
+
+- create electrum directory and download [Electrum Wallet](https://electrum.org/#download).
 
 ```
 mkdir electrum && cd ./electrum
@@ -94,9 +136,49 @@ echo 'export PATH="$PATH:/home/web/.local/bin/"' >> ~/.profile && source ~/.prof
 electrum create --segwit --encrypt_file=true -W "Password"<Paste>
 ```
 - Export zpub key
-```electrum getmpk -w ./path/to/wallet/default_wallet
 ```
-### Configuring electrum-merchant
+electrum getmpk -w ./path/to/wallet/default_wallet
+```
+### Configuring Electrum
+
+- Set Electrum configs and restore zpub public key:
+```
+electrum setconfig requests_dir /srv/www/payment/ \
+electrum setconfig url_rewrite "[ 'file:///srv/www/', '//localhost/' ]" \
+electrum setconfig rpcuser USERNAME \
+electrum setconfig rpcpassword PASSWORD \
+electrum setconfig rpcport 7777\
+
+# restore public key
+electrum restore zpub
+```
+
+#### Install Electrum-Merhcant
+```
+python3 -m electrum-merchant
+```
+
+### Electrum commands
+- Finally start Electrum, I connect to my own node with:
+```
+electrum daemon start --oneserver --server pi3-3:50002:s
+```
+
+- Test connection:
+```
+curl --data-binary '{"id":"curltext","method":"addrequest","params":{"amount":"3.14","memo":"test"}}' http://USERNAME:PASSWORD@127.0.0.1:7777
+
+```
+
+- Stopping electrum daemon
+```
+electrum daemon stop
+```
+
+- Load wallet
+```
+electrum daemon load_wallet
+```
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
