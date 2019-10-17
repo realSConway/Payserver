@@ -4,3 +4,10 @@ y = comment
 git add x
 git commit -m "y"
 git push 
+
+
+download
+
+git fetch origin
+git status
+git pull
