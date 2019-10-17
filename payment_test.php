@@ -10,7 +10,7 @@
 		<div id="main">
 <?php
 if (isset($_POST)) {
-	echo "<div id=\"sub\"><p>bc1qv4klgumgvwvktflquwjunmxr42wshtd747rc27</p></div>";
+	echo "<div id=\"sub\"><p>bc1_TEST_payment_page_uwjunmxr42wshtd747rc27</p></div>";
 }
 ?>
 		</div>
