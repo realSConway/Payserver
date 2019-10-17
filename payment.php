@@ -2,17 +2,17 @@
 		<head>
 		<title>Address page</title>
 		<link href="./../design_submit_button.css" rel="stylesheet">
-		<!--		<style>
-						body {
-								background-color: MediumSeaGreen;
-						}
-						h1 {
-								text-align: center;
-								font-family: Arial;
-						}
-				</style>-->
+	<!--		<style>
+					body {
+						background-color: MediumSeaGreen;
+					}
+					h1 {
+						text-align: center;
+						font-family: Arial;
+					}
+			</style>-->
 		</head>
-<body>
+			<body>
 				<main>
 <?php
 if (isset($_POST)) {
@@ -25,15 +25,16 @@ if (isset($_POST)) {
 	curl_setopt($ch, CURLOPT_POST , 1);
 	curl_setopt($ch, CURLOPT_USERPWD , 'bitcoin:LQ4LYRsfgAPTz1xqxutBcOzL8CWj_ZRGGMB8b6B9v7A=');
 	curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, "{\"id\":\"curltext\",\"method\":\"addrequest\",\"params\":{\"amount\":\"0.00000001\"}}");
+	curl_setopt($ch, CURLOPT_POSTFIELDS, "{\"id\":\"curltext\",\"method\":\"addrequest\",\"params\":{\"amount\":\"0.00000001\",\"force\":\"true\"}}");
+
 
 	$result = curl_exec($ch);
 
 	$obj = json_decode($result, true);
-//	echo "<div id=\"sub><p>".$obj["result"]["address"]."</p></div>";
-	echo $obj["result"]["address"];
+	echo "<div id=\"sub\"><p>".$obj["result"]["address"]."</p></div>";
+//	echo $obj["result"]["address"];
 //	echo "<div id=\"sub><p>css test</p></div>";
-	echo "test";
+//	echo "test";
 	
 }
 ?>
