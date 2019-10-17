@@ -169,13 +169,14 @@ electrum daemon stop
 ```
 electrum daemon load_wallet
 ```
+---
 
 ## ToDo's
-[] SSL cert
-[] OnionShare
-[] Make page more dynamic
+- [] SSL cert
+- [] OnionShare
+- [] Make page more dynamic
 
-
+---
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
