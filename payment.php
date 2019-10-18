@@ -22,7 +22,9 @@ if (isset($_POST)) {
 	$result = curl_exec($ch);
 
 	$obj = json_decode($result, true);
+
 	echo "<div id=\"sub\"><p>".$obj["result"]["address"]."</p></div>";
+
 	curl_close($ch);
 }
 ?>
