@@ -1,16 +1,7 @@
 <html>
 		<head>
-		<title>Address page</title>
-		<link href="./../design_submit_button.css" rel="stylesheet">
-	<!--		<style>
-					body {
-						background-color: MediumSeaGreen;
-					}
-					h1 {
-						text-align: center;
-						font-family: Arial;
-					}
-			</style>-->
+			<title>Address page</title>
+			<link href="./../design_submit_button.css" rel="stylesheet">
 		</head>
 			<body>
 				<main>
