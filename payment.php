@@ -32,10 +32,7 @@ if (isset($_POST)) {
 
 	$obj = json_decode($result, true);
 	echo "<div id=\"sub\"><p>".$obj["result"]["address"]."</p></div>";
-//	echo $obj["result"]["address"];
-//	echo "<div id=\"sub><p>css test</p></div>";
-//	echo "test";
-	
+	curl_close($ch);
 }
 ?>
 				</main>
