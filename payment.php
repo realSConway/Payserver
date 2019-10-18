@@ -18,7 +18,6 @@ if (isset($_POST)) {
 	curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, "{\"id\":\"curltext\",\"method\":\"addrequest\",\"params\":{\"amount\":\"0.00000001\",\"force\":\"true\"}}");
 
-
 	$result = curl_exec($ch);
 
 	$obj = json_decode($result, true);
