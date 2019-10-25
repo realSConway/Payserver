@@ -172,9 +172,10 @@ electrum daemon load_wallet
 ---
 
 ## ToDo's
-- [] SSL cert
-- [] OnionShare
-- [] Make page more dynamic
+- [ ] SSL cert
+- [ ] OnionShare
+- [ ] Make page more dynamic
+- [ ] Update electrum service to work for user web.
 
 ---
 
