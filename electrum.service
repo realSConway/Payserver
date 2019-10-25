@@ -1,0 +1,16 @@
+[Unit]
+Description=The Electrum service
+Documentation=https://github.com/realSConway/Payserver
+
+
+[Service]
+Type=simple
+ExecStart=/home/web/.local/bin/electrum daemon start --oneserver --server pi3-3:50002:s
+ExecStartPost=/home/web/.local/bin/electrum daemon load_wallet
+ExecStop=/home/web/.local/bin/electrum daemon stop
+User=web
+Restart=on-failure
+
+
+[Install]
+WantedBy=multi-user.target
